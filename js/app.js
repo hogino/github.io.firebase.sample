@@ -52,7 +52,7 @@
       var baseUrl;
       baseUrl = 'http://localhost:63342/profile';
       return $stateProvider.state("app", {
-        url: "#",
+        url: "/#",
         views: {
           "": {
             template: '<div ui-view="header"></div>' + '<div ui-view="content"></div>' + '<div ui-view="footer"></div>'

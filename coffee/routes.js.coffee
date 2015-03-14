@@ -7,7 +7,7 @@ app.config [
     baseUrl = 'http://localhost:63342/profile'
     $stateProvider
       .state("app",
-        url: "#"
+        url: "/#"
 #        template: '<div ui-view="header"></div>' + '<div ui-view="content"></div>' + '<div ui-view="footer"></div>'
 
         views:
