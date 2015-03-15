@@ -1,0 +1,45 @@
+
+<div ng-controller="SampleCtrl">
+  <form ng-submit="authToken()">
+    <md-content>
+      <section layout="row" layout-sm="column" layout-align="center center">
+        <md-input-container>
+          <label>Token</label>
+          <input placeholder="input token" ng-model="token" />
+        </md-input-container>
+
+        <md-button type="submit" class="md-raised md-primary">
+          Auth
+        </md-button>
+      </section>
+    </md-content>
+  </form>
+
+  <form ng-submit="addMessage()">
+    <md-content>
+      <section layout="row" layout-sm="column" layout-align="center center">
+        <md-input-container>
+          <label>Message</label>
+          <input placeholder="input message" ng-model="newMessageText" />
+        </md-input-container>
+
+        <md-button type="submit" class="md-raised md-primary">
+          Send
+        </md-button>
+      </section>
+    </md-content>
+  </form>
+
+  <md-content>
+    <section layout="row" layout-sm="column" layout-align="center center" ng-repeat="message in messages">
+      <md-input-container>
+        <label>Message</label>
+        <input ng-model="message.text" ng-change="messages.$save(message)" />
+      </md-input-container>
+
+      <md-button ng-click="messages.$remove(message)" class="md-raised md-warn">
+        Delete Message
+      </md-button>
+    </section>
+  </md-content>
+</div>

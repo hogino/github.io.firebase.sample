@@ -4,22 +4,17 @@ app.config [
   (
     $stateProvider
   ) ->
-    baseUrl = 'http://localhost:63342/profile'
     $stateProvider
       .state("app",
-        url: "#"
-#        template: '<div ui-view="header"></div>' + '<div ui-view="content"></div>' + '<div ui-view="footer"></div>'
-
+        url: "/"
         views:
           "":
-#            templateUrl: "#{baseUrl}/views/layouts/default.html"
-            template: '<div ui-view="header"></div>' + '<div ui-view="content"></div>' + '<div ui-view="footer"></div>'
-#            controller: "MainCtrl"
+            templateUrl: "views/layouts/default.html"
           "header@app":
-            template: '<header></header>'
+            templateUrl: "views/layouts/header.html"
           "footer@app":
-            template: "../views/layouts/footer.html"
+            templateUrl: "views/layouts/footer.html"
           "content@app":
-            template: "test content"
+            templateUrl: "home.html"
       )
 ]

@@ -22,6 +22,23 @@
 }).call(this);
 
 (function() {
+  app.controller('HeaderCtrl', [
+    '$scope', function($scope) {
+      $scope.data = {
+        selectedIndex: 0,
+        secondLocked: true,
+        secondLabel: "Item Two"
+      };
+      $scope.next = function() {};
+      $scope.data.selectedIndex = Math.min($scope.data.selectedIndex + 1, 2);
+      $scope.previous = function() {};
+      return $scope.data.selectedIndex = Math.max($scope.data.selectedIndex - 1, 0);
+    }
+  ]);
+
+}).call(this);
+
+(function() {
   app.controller("SampleCtrl", [
     '$scope', '$firebaseArray', '$state', function($scope, $firebaseArray, $state) {
       var ref;
@@ -49,22 +66,36 @@
 (function() {
   app.config([
     "$stateProvider", function($stateProvider) {
-      var baseUrl;
-      baseUrl = 'http://localhost:63342/profile';
       return $stateProvider.state("app", {
-        url: "#",
+        url: "/",
         views: {
           "": {
-            template: '<div ui-view="header"></div>' + '<div ui-view="content"></div>' + '<div ui-view="footer"></div>'
+            templateUrl: "views/layouts/default.html"
           },
           "header@app": {
-            template: '<header></header>'
+            templateUrl: "views/layouts/header.html"
           },
           "footer@app": {
-            template: "../views/layouts/footer.html"
+            templateUrl: "views/layouts/footer.html"
           },
           "content@app": {
-            template: "test content"
+            templateUrl: "home.html"
+          }
+        }
+      });
+    }
+  ]);
+
+}).call(this);
+
+(function() {
+  app.config([
+    "$stateProvider", function($stateProvider) {
+      return $stateProvider.state("app.message", {
+        url: "^/message",
+        views: {
+          "content@app": {
+            templateUrl: "views/messages/index.html"
           }
         }
       });
