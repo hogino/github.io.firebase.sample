@@ -1,0 +1,39 @@
+
+<div ng-if="!isInfoView" layout="column" flex layout-fill>
+  <md-toolbar class="md-theme-light">
+    <h1 class="md-toolbar-tools">
+      <span>Content List</span>
+    </h1>
+  </md-toolbar>
+  <md-content style="max-height: 600px;">
+    <section>
+      <!--<md-subheader class="md-primary">Unread Messages</md-subheader>-->
+      <md-list layout="column">
+        <md-item ng-repeat="content in contents">
+          <md-item-content ng-click="viewInfo(content)">
+            <div class="md-tile-content">
+              <h3>{{content.title}}</h3>
+            </div>
+
+            <a href="" class="md-tile-left">
+              <i class="fa fa-arrow-circle-right"></i>
+            </a>
+          </md-item-content>
+          <md-divider ng-if="!$last"></md-divider>
+        </md-item>
+      </md-list>
+    </section>
+  </md-content>
+</div>
+
+<div ng-if="isInfoView" layout="column" flex layout-fill>
+  <md-toolbar class="md-primary">
+    <md-button class="md-toolbar-tools" ng-click="viewList()">
+      <i class="fa fa-arrow-circle-left"></i>
+      <span class="md-flex">{{contentInfo.title}}</span>
+    </md-button>
+  </md-toolbar>
+  <md-content class="md-padding" style="padding: 24px;">
+    <div bind-compiled-html="contentInfo.body"></div>
+  </md-content>
+</div>

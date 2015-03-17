@@ -1,0 +1,52 @@
+
+<div>
+  <!--<form ng-submit="authToken()">-->
+    <!--<md-content>-->
+      <!--<section layout="row" layout-sm="column" layout-align="center center">-->
+        <!--<md-input-container>-->
+          <!--<label>Token</label>-->
+          <!--<input placeholder="input token" ng-model="token" />-->
+        <!--</md-input-container>-->
+
+        <!--<md-button type="submit" class="md-raised md-primary">-->
+          <!--Auth-->
+        <!--</md-button>-->
+      <!--</section>-->
+    <!--</md-content>-->
+  <!--</form>-->
+
+  <!-- 追加 -->
+  <form ng-submit="addContent()">
+    <md-content>
+      <section layout="row" layout-sm="column" layout-align="center center">
+        <md-input-container flex>
+          <label>Title</label>
+          <textarea ng-model="title" columns="2" md-maxlength="50"></textarea>
+          <!--<input placeholder="input title" ng-model="title" />-->
+        </md-input-container>
+      </section>
+
+      <div text-angular ng-model="body"></div>
+
+      <section layout="row" layout-sm="column" layout-align="center center">
+        <md-button type="submit" class="md-raised md-primary">
+          Send
+        </md-button>
+      </section>
+    </md-content>
+  </form>
+
+  <!-- 一覧・編集・削除 -->
+  <md-content>
+    <section layout="row" layout-sm="column" layout-align="center center" ng-repeat="content in contents">
+      <md-input-container>
+        <label>Title</label>
+        <input ng-model="content.title" ng-change="contents.$save(content)" />
+      </md-input-container>
+
+      <md-button ng-click="contents.$remove(content)" class="md-raised md-warn">
+        Delete Blog
+      </md-button>
+    </section>
+  </md-content>
+</div>
